@@ -313,7 +313,11 @@ void Arena::render() {
         for (int c = 0; c < width; ++c) {
             if (grid[r][c].occupant) {
                 char icon = (grid[r][c].occupant->get_health() > 0) ? 'R' : 'X';
-                std::cout << icon << grid[r][c].occupant->m_character << " ";
+                if (grid[r][c].occupant->m_character != '\0') {
+                    std::cout << icon << grid[r][c].occupant->m_character << " ";
+                } else {
+                    std::cout << icon << "  ";
+                }
             } else std::cout << " " << grid[r][c].type << " ";
         }
         std::cout << "\n";
