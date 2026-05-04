@@ -119,6 +119,12 @@ void Arena::loadRobots() {
 void Arena::run() {
     int currentRound = 1;
     while (currentRound <= maxRounds) {
+        #ifdef _WIN32
+            std::system("cls");
+        #else
+            std::system("clear");
+        #endif
+
         std::cout << "        " << "\n=========== Round " << currentRound << " ===========\n";
         render();
 
@@ -143,6 +149,7 @@ void Arena::run() {
             }
         }
         if (gameStateLive) {
+            std::cout << std::flush;
             usleep(static_cast<useconds_t>(sleepInterval * 1000000));
         }
         currentRound++;
